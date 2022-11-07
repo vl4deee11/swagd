@@ -1,0 +1,2 @@
+# swagd
+Swagger decomposition util
