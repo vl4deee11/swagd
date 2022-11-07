@@ -41,7 +41,7 @@ func main() {
 	swgs := make(map[string]interface{})
 	paths := orig["paths"].(map[string]interface{})
 	for k, v := range paths {
-		log.Printf("HANDLER = %s\nWRITE NAME OF FILE FOR THIS HANDLER (OR 'exit' TO SAVE AND STOP)...\n", k)
+		log.Printf("\n\nHANDLER = %s\nWRITE NAME OF FILE FOR THIS HANDLER (OR 'exit' TO SAVE AND STOP)...\n", k)
 		file := ""
 		_, _ = fmt.Scanln(&file)
 		if file == "exit" {
