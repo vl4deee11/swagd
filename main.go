@@ -22,9 +22,15 @@ schemes:
 basePath: /
 `
 
+type SwagS struct {
+	Path        interface{} `yaml:"paths"`
+	Parameters  interface{} `yaml:"parameters"`
+	Definitions interface{} `yaml:"definitions"`
+}
+
 func main() {
 	var origSwagger string
-	flag.StringVar(&origSwagger, "in", "", "-in=../../../swagger-doc/swagger.yml")
+	flag.StringVar(&origSwagger, "in", "./../../swagger-doc/swagger.yml", "-in=./../../swagger-doc/swagger.yml")
 	flag.Parse()
 
 	filename, _ := filepath.Abs(origSwagger)
@@ -70,7 +76,11 @@ func main() {
 		bb.WriteString(startFile)
 		enc := yaml.NewEncoder(bb)
 		enc.SetIndent(2)
-		err = enc.Encode(&v)
+		err = enc.Encode(&SwagS{
+			Path:        v.(map[string]interface{})["paths"],
+			Definitions: v.(map[string]interface{})["definitions"],
+			Parameters:  v.(map[string]interface{})["parameters"],
+		})
 		if err != nil {
 			log.Fatalln(err)
 		}
