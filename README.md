@@ -1,7 +1,7 @@
 # swagd
 # Swagger decomposition util
 
-Утилита для переноса path с parameters и definitions в разные файлы
+Utility for transferring path with parameters and definitions to different files
 
 Run:
 
